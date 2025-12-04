@@ -17,7 +17,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "username cannot be null")
     @NotBlank
     private String username;
 
