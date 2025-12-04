@@ -101,27 +101,8 @@ Below are core tables the clinic system needs.
 
 ---
 
-###  Table: clinic_locations
-- id: INT, Primary Key, AUTO_INCREMENT
-- name: VARCHAR(100), NOT NULL
-- address: VARCHAR(255), NOT NULL
-- phone: VARCHAR(20)
-- created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 
----
 
-###  Table: payments
-- id: INT, Primary Key, AUTO_INCREMENT
-- appointment_id: INT, NOT NULL, Foreign Key → appointments(id)
-- amount: DECIMAL(10,2), NOT NULL
-- method: ENUM('cash','card','insurance','online'), NOT NULL
-- status: ENUM('pending','paid','refunded'), NOT NULL, DEFAULT 'pending'
-- paid_at: TIMESTAMP, NULL
-
-**Notes**
-- Payment depends on a specific appointment.
-
----
 
 ## MongoDB Collection Design
 
