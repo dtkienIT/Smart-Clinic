@@ -1,94 +1,153 @@
-/*this is the style sheet for the adminDashboard. */
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* 
-Global Reset (`*`)
+/* ===== Base ===== */
+html, body {
+  height: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f7fa;
+}
 
-* Purpose: Ensure consistent layout across all browsers.
-* Properties:
+/* ===== Wrapper Layout ===== */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  * `margin: 0` — removes default outer spacing from all elements.
-  * `padding: 0` — removes default inner spacing.
-  * `box-sizing: border-box` — ensures padding and borders are included within the total width/height of elements.
+/* ===== Main Content ===== */
+.main-content {
+  flex-grow: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
 
-Base HTML & Body (`html, body`)
+/* Dashboard box */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
 
-* Purpose: Establish a full-height layout and apply a standard font across the page.
-* Properties:
+/* ===== Heading ===== */
+h2 {
+  font-size: 32px;
+  color: #003e3e;
+  margin-bottom: 30px;
+  text-align: left;
+}
 
-  * `height: 100%` — allows containers to stretch to the full viewport height.
-  * `font-family: Arial, sans-serif` — applies a clean, readable sans-serif font.
+/* ===== Toolbar ===== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
 
-Main Layout Wrapper (`.wrapper`)
+/* Search bar */
+.searchBar {
+  flex: 1;
+  min-width: 240px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
 
-* Purpose: Create a flexible, vertical layout that fills the entire screen.
-* Properties:
+.searchBar:focus {
+  outline: none;
+  border-color: #015c5d;
+  box-shadow: 0 0 6px rgba(1, 92, 93, 0.4);
+}
 
-  * `display: flex` — enables flexbox for layout control.
-  * `flex-direction: column` — stacks children vertically.
-  * `min-height: 100vh` — ensures the wrapper always covers full screen height.
+/* Filters */
+.filter-select {
+  min-width: 160px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
 
-Section Heading (`h2`)
+.filter-select:focus {
+  outline: none;
+  border-color: #015c5d;
+  box-shadow: 0 0 6px rgba(1, 92, 93, 0.4);
+}
 
-* Purpose: Style the headings prominently for section separation.
-* Properties:
+/* ===== Cards Grid ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
 
-  * `font-size: 32px` — makes the heading large and noticeable.
-  * `font-weight: bold` — emphasizes text.
-  * `margin-bottom: 50px` — creates space below the heading.
-  * `color: #003e3e` — uses a strong teal for visual anchoring.
+/* ===== Buttons ===== */
+button {
+  background-color: #A62B1F;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-Main Content Section (`.main-content`)
+button:hover {
+  background-color: #8f241a;
+  transform: translateY(-2px);
+}
 
-* Purpose: Layout the main content with padding and a background image.
-* Properties:
+/* ===== Admin Secondary Button ===== */
+.adminBtn {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
 
-  * `flex-grow: 1` — lets the content fill the available vertical space.
-  * `padding: 40px` — adds internal spacing around content.
-  * `display: flex` and `flex-direction: column` — organizes content in a vertical stack.
-  * `text-align: center` — centers the text.
-  * `background-image: url("index.png")` — sets a full-screen dashboard background.
-  * `background-size: cover` — ensures the image covers the whole section.
-  * `background-position: center` — centers the image.
-  * `background-repeat: no-repeat` — avoids tiling the image.
-  * `background-attachment: fixed` — fixes the image while scrolling.
+.adminBtn:hover {
+  color: #A62B1F;
+}
 
-Primary Button (`button`)
+/* ===== Modal ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
 
-* Purpose: Design prominent, interactive buttons for main actions.
+.modal-content {
+  background-color: #fff;
+  width: 420px;
+  max-width: 90%;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 16px;
+  position: relative;
+}
 
-* Properties:
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+}
 
-  * `background-color: #A62B1F` — sets a bold red color.
-  * `color: white` — makes text stand out.
-  * `border: none` — removes any outline/border.
-  * `border-radius: 12px` — creates rounded corners.
-  * `padding: 10px 20px` — gives space inside the button.
-  * `margin-top: 20px` — adds spacing above the button.
-  * `width: 200px` — ensures consistent button width.
-  * `cursor: pointer` — shows a hand icon on hover.
-  * `font-size: 16px` — makes the text readable.
-
-* On Hover:
-
-  * Retains the same red background to maintain branding.
-
-Admin Button (`.adminBtn`)
-
-* Purpose: Provide a secondary button style for admin-specific actions.
-
-* Properties:
-
-  * `background-color: #f4f4f4` — uses a light grey background.
-  * `color: #333` — uses dark text for contrast.
-  * `font-weight: bold` — emphasizes text.
-  * `width: 110px` — smaller, compact width.
-  * `padding: 10px 0` — vertical padding only.
-  * `border: none` — clean look.
-  * `cursor: pointer` — indicates it's clickable.
-
-* On Hover**:
-
-   Changes text color to `#A62B1F` for brand consistency while keeping the background same.
-
-
-*/
+.close:hover {
+  color: #000;
+}
